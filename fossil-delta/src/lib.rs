@@ -29,6 +29,15 @@ assert_eq!(&s, a);
 assert_eq!(d.len(), 43);
 ```
 */
+
+// For cargo-fuzz
+#[derive(Clone, Debug)]
+#[cfg_attr(feature = "arbitrary", derive(arbitrary::Arbitrary))]
+pub struct DiffInput {
+    pub a: String,
+    pub b: String,
+}
+
 const NHASH: usize = 16;
 /// converts integer to String in base 64
 pub fn b64str(n: u32) -> String {

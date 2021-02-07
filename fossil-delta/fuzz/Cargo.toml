@@ -1,0 +1,24 @@
+
+[package]
+authors = ["Automatically generated"]
+edition = "2018"
+name = "fossil-delta-fuzz"
+publish = false
+version = "0.0.0"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+fossil-delta = {path = "..", features = ["arbitrary"]}
+libfuzzer-sys = "0.3"
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+doc = false
+name = "fuzz_target_1"
+path = "fuzz_targets/fuzz_target_1.rs"
+test = false
